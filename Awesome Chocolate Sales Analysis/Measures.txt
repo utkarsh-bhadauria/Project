@@ -1,0 +1,34 @@
+Measures
+------------------------------------
+Total Teams = DISTINCTCOUNT(people[Team])
+Total Shipment = COUNTROWS(shipments)
+Total Salesperons = DISTINCTCOUNT(shipments[Sales Person])
+Total Revenue = SUM(shipments[Sales])
+Total Cost = SUM(shipments[Cost])
+Total Profit = [Total Revenue] - [Total Cost]
+Total Profit% = DIVIDE([Total Profit],[Total Revenue])
+Total Prod Category = DISTINCTCOUNT(products[Category])
+Total Boxes = SUM(shipments[Boxes])
+Total Low-Box Shipment = CALCULATE(COUNT(shipments[Box Segment]), shipments[Box Segment]="Low-Box Shipment")
+Sales Per Team = DIVIDE([Total Revenue],[Total Teams])
+Sales Per Prod Category = DIVIDE([Total Revenue],[Total Prod Category]) 
+Revenue All = CALCULATE([Total Revenue], ALL(people))
+Revenue Top3 = CALCULATE([Total Revenue],TOPN(3, ALL(people),[Total Revenue]))
+Rank SalesPerson = RANKX(ALL(people),[Total Revenue])
+Best Month = "Best Month: " & SELECTEDVALUE('Calendar_Dimension'[Month])
+% Revenue = DIVIDE([Total Revenue],[Revenue All])
+
+Festival Season = CALCULATE([Total Revenue], 
+Calendar_Dimension[Month Number]=10 ||                                            
+Calendar_Dimension[Month Number]=11 ||                                           
+Calendar_Dimension[Month Number]=12
+
+---------------------------------------------
+Cost = shipments[Boxes]*RELATED(products[Cost per box])
+
+Calculated Columns
+Box Segment = SWITCH(TRUE,
+                        shipments[Boxes]>500, "High-box Shipment", 
+                        shipments[Boxes]>=50, "Average-box Shipment",
+                        "Low-box Shipment"
+)
