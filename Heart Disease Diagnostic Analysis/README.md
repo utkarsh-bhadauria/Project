@@ -1,5 +1,4 @@
-# iNeuron-Internship
-project 1
+project
 
 Problem Statement ❓
 
