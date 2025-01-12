@@ -11,9 +11,8 @@ Technology - Business Intelligence
 
 Domain - Healthcare
 
-Tableau Public Dashboard link - https://public.tableau.com/views/myfirsttHeartDiseaseDiagnosticAnalysisproject/HeartDiseaseDiagnosticAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link
 
-*Programming language used - Python*
+
 
 
 
